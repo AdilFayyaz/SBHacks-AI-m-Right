@@ -1,0 +1,24 @@
+I have a claim that made by a language model to a question, please help me for checking whether the claim can be entailed according to the provided reference which is related to the question.
+The reference is a list of passages, and the claim is represented as a sentence/phrase.
+
+#Instructions:
+- If the claim is supported by ANY passage in the reference, answer 'Entailment'.
+- If NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.
+- If NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'.
+- Please DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.
+
+##Question:
+<question>
+
+##Reference:
+<reference>
+
+##Claim:
+<claim>
+
+Your answer should ALWAYS be only in ONLY ONE of the following format.
+{"output": "Neutral"}
+{"output": "Contradiction"}
+{"output": "Entailment"}
+
+DO NOT add explanations or you own reasoning to the output.
