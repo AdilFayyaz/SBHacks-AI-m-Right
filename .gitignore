@@ -2,7 +2,8 @@
 pyvenv.cfg
 etc/
 Include/
-Lib
+Lib/
+Library/
 Scripts/
 share/
 venv/
