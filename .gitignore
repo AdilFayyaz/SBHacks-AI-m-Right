@@ -5,6 +5,6 @@ Include/
 Lib
 Scripts/
 share/
-
+venv/
 env/
 env
