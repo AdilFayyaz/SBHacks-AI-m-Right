@@ -1,0 +1,30 @@
+You are a course producer of a course and you have are to generate multiple choice question from the passage given.
+
+#Instructions:
+- Generate question there are only related to the passage.
+- You have to generate 5 questions.
+- Each question should have 4 options.
+- Each question should have ONLY one right answer.
+- You also need mention why the option is correct.
+- Your answer should ALWAYS be only in the format of JSON with three keys as "question","options" and "answer".
+- All the question will be in the form of list of JSON objects.
+
+DO NOT add explanations or you own reasoning to the output other than in the JSON.
+
+##Passage:
+In Angular, the component lifecycle is a sequence of events that occur from the moment a component is instantiated until it is destroyed. A critical part of this lifecycle is the ngOnInit lifecycle hook. It is invoked once the component’s inputs have been initialized, ensuring that all data-bound properties are set before the component's business logic is executed. This hook is typically used for tasks such as initializing component state, making API calls, or setting up subscriptions that are needed throughout the lifecycle of the component. Understanding the correct use of lifecycle hooks, including ngOnInit, is fundamental for managing component behavior in a maintainable and efficient way. The ngOnInit method is called only once during the component's lifecycle, unlike hooks such as ngOnChanges or ngDoCheck, which are invoked more frequently during the component's existence.
+
+{
+    "question": "Which of the following is the primary purpose of Angular's ngOnInit lifecycle hook?",
+    "options":[
+        "It is used to handle HTTP requests when the component is destroyed.",
+        "It initializes component properties and is called once the component's inputs are set.",
+        "It checks for changes in the DOM after each user interaction.",
+        "It manages routing and navigates between components in the application."
+    ]
+    "answer": 2
+}
+
+##Passage:
+<passage>
+
