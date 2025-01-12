@@ -44,16 +44,16 @@ def upload_embedding():
         user_prompt_text = data['user_prompt_text']
 
         # Access the file from the specified path
-        # file_path = os.path.join("/tmp", file_name)
-        # file_path = file_name
-        # print(file_path)
-        # if not os.path.exists(file_path):
-        #     return jsonify({"error": f"File {file_name} does not exist at the specified path."}), 404
+        file_path = os.path.join("/tmp", file_name)
+        file_path = file_name
+        print(file_path)
+        if not os.path.exists(file_path):
+            return jsonify({"error": f"File {file_name} does not exist at the specified path."}), 404
 
-        # # Initialize the Sycamore context
-        # ctx = sycamore.init(ExecMode.LOCAL)
-        # print("Print 1")
-        # # Set the embedding model and its parameters
+        # Initialize the Sycamore context
+        ctx = sycamore.init(ExecMode.LOCAL)
+        print("Print 1")
+        # Set the embedding model and its parameters
         # model_name = "sentence-transformers/all-MiniLM-L6-v2"
         # max_tokens = 512
         # dimensions = 384
@@ -99,18 +99,18 @@ def upload_embedding():
         # )
         # print("Print 4")
         # Load the same embedding model
-        # model_name = "all-MiniLM-L6-v2"
-        # embedder = SentenceTransformer(model_name)
+        model_name = "all-MiniLM-L6-v2"
+        embedder = SentenceTransformer(model_name)
         
-        # pinecone_context = pinecone_retrieval(user_prompt_text, ctx, embedder)
-        # if type_of_question=="mcq":
-        #     questions = generate_mcq(pinecone_context, number_of_questions)
-        # elif type_of_question=="short":
-        #     questions = generate_shortq(pinecone_context, number_of_questions)
+        pinecone_context = pinecone_retrieval(user_prompt_text, ctx, embedder)
         if type_of_question=="mcq":
-            questions = generate_mcq(user_prompt_text, number_of_questions)
+            questions = generate_mcq(pinecone_context, number_of_questions)
         elif type_of_question=="short":
-            questions = generate_shortq(user_prompt_text, number_of_questions)
+            questions = generate_shortq(pinecone_context, number_of_questions)
+        # if type_of_question=="mcq":
+        #     questions = generate_mcq(user_prompt_text, number_of_questions)
+        # elif type_of_question=="short":
+        #     questions = generate_shortq(user_prompt_text, number_of_questions)
         print("Reached here")
         return questions
 
@@ -131,17 +131,15 @@ def verify():
         llm_answer = data['llm_answer']
         user_answer = data['answer']
 
+        import pdb; pdb.set_trace()
         # Verify the answer using verifier.py
         result = verify_short_answer(question, user_answer, llm_answer)
-
+        print("here here her ehr eh")
         if not result:
             return jsonify({"error": "Verification failed."}), 500
 
         # Return the correct answer and explanation
-        return jsonify({
-            "correct_answer": result.get('correct_answer'),
-            "explanation": result.get('explanation')
-        }), 200
+        return jsonify({"correct_answer": result[0], "explanation": result[1]}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500

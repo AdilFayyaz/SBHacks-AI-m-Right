@@ -62,7 +62,16 @@ def handle_submit_answer(question_type):
             data = {"question": question['question'],
                     "llm_answer": question['llm_answer'],
                     "answer": st.session_state.short_ans}
-            results = requests.post(url="http://127.0.0.1:5000/verify-short", json=data)
+            results = requests.post(url="http://127.0.0.1:5000/verify-short", json=data).json()
+            # results = results.json()
+            print(results)
+            if results['correct_answer'] == -1:
+                st.session_state.feedback = f"<span style='color: red; font-weight: bold;'>Incorrect answer. Explanation: {results['explanation']}.</span>"
+                st.session_state.incorrect_answers.append({
+                    "question": question["question"],
+                    "correct_answer": question["llm_answer"],
+                    "selected_answer": st.session_state.short_ans
+                })
 
 def handle_next_question():
     """Handle next question button click."""
