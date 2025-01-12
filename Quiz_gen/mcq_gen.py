@@ -21,10 +21,10 @@ def read_prompt_template(file_path):
         return file.read()
 
 # Function to create the prompt by replacing placeholders
-def create_prompt(passage, template):
+def create_prompt(passage, template,nos):
     prompt = template.replace("<passage>", passage)
+    prompt = prompt.replace("<nos>",str(nos))
     return prompt
-
 
 def extract_response_details_mcq(response_content):
     """
@@ -76,12 +76,12 @@ def extract_response_details_mcq(response_content):
     
     
 # Function to generate output based on inputs
-def generate_mcq(context):
+def generate_mcq(context,nos):
     # Read the template from the file
     template = read_prompt_template("mcq_gen_prompt.txt")
     
     # Construct the prompt
-    prompt = create_prompt(context, template)
+    prompt = create_prompt(context, template,nos)
     
     retries = 5
     while retries > 0:
@@ -107,6 +107,6 @@ def generate_mcq(context):
 # # Sample RUN
 # passage = "The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a web page as a tree of objects, each corresponding to a part of the page, such as elements, attributes, and text content. In Angular, the DOM plays a crucial role in rendering components and handling user interactions. Angular’s change detection mechanism updates the DOM efficiently, ensuring that only the necessary elements are re-rendered when the component's data changes. This dynamic interaction between the component’s state and the DOM is at the core of Angular's declarative rendering approach. Furthermore, Angular provides tools like Renderer2 to safely interact with the DOM, which helps abstract away browser-specific differences and improves security by preventing potential cross-site scripting (XSS) vulnerabilities. Understanding how Angular interacts with the DOM is key to optimizing application performance and ensuring seamless user experiences."
 
-# extracted_details= generate_mcq(passage)
+# extracted_details= generate_mcq(passage,3)
 # print(extracted_details)
-# import pdb; pdb.set_trace()
+

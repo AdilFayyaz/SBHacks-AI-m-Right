@@ -1,8 +1,8 @@
 You are a course producer of a course and you have are to generate multiple choice question from the passage given.
 
 #Instructions:
-- Generate question there are only related to the passage.
-- You have to generate 5 questions.
+- Generate questions that are only related to the passage.
+- You have to generate <nos> questions.
 - Each question should have 4 options.
 - Each question should have ONLY one right answer.
 - You also need mention why the option is correct.
