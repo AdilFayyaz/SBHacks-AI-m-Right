@@ -83,7 +83,7 @@ def verify_short_answer(question, claim, reference):
         # Extract and parse the response
         answer_mapping = {
             "Contradiction": -1,  # Contradiction is mapped to wrong
-            "entailment": 1,   # Entailment is mapped to correct
+            "Entailment": 1,   # Entailment is mapped to correct
         }
         output,reason = extract_output_and_reason(response.content[0].text)
         if output and reason:  # If valid JSON was extracted, return it

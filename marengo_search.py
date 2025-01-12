@@ -100,6 +100,34 @@ class TwelveLabsSearch:
             print(f"Error: Status code {response.status_code}")
             return None
 
+def download_and_crop_video(video_url, output_path, start_time, end_time):
+    try:
+        print(f"Loading video from {video_url}...")
+        
+        # Load the video directly from the URL using MoviePy
+        clip = VideoFileClip(video_url)
+        
+        print(f"Cropping video from {start_time} to {end_time} seconds...")
+        
+        # Extract the subclip
+        subclip = clip.subclip(start_time, end_time)
+        
+        # Write the subclip to the output file
+        subclip.write_videofile(output_path, codec="libx264")
+        
+        print(f"Video cropped successfully and saved to {output_path}")
+        
+    except Exception as e:
+        print("Error processing video:", str(e))
+        
+    finally:
+        # Close the clips to release resources
+        if 'clip' in locals():
+            clip.close()
+        if 'subclip' in locals():
+            subclip.close()
+ 
+
 # Example usage
 if __name__ == "__main__":
     query_text_list = [
