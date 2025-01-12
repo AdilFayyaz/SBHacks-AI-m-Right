@@ -128,10 +128,11 @@ def verify():
             return jsonify({"error": "Invalid input. 'question' and 'answer' are required."}), 400
 
         question = data['question']
+        llm_answer = data['llm_answer']
         user_answer = data['answer']
 
         # Verify the answer using verifier.py
-        result = verify_short_answer(question, user_answer)
+        result = verify_short_answer(question, user_answer, llm_answer)
 
         if not result:
             return jsonify({"error": "Verification failed."}), 500
