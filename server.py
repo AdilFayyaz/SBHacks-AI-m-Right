@@ -21,6 +21,7 @@ from mcq_gen import generate_mcq
 from shortq_gen import generate_shortq
 from pinecone_fetch import pinecone_retrieval
 from sentence_transformers import SentenceTransformer
+from handout_gen import generate_handout
 
 # Load environment variables
 load_dotenv()
@@ -43,21 +44,21 @@ def upload_embedding():
         user_prompt_text = data['user_prompt_text']
 
         # Access the file from the specified path
-        file_path = os.path.join("/tmp", file_name)
-        file_path = file_name
-        print(file_path)
-        if not os.path.exists(file_path):
-            return jsonify({"error": f"File {file_name} does not exist at the specified path."}), 404
+        # file_path = os.path.join("/tmp", file_name)
+        # file_path = file_name
+        # print(file_path)
+        # if not os.path.exists(file_path):
+        #     return jsonify({"error": f"File {file_name} does not exist at the specified path."}), 404
 
-        # Initialize the Sycamore context
-        ctx = sycamore.init(ExecMode.LOCAL)
-        print("Print 1")
-        # Set the embedding model and its parameters
+        # # Initialize the Sycamore context
+        # ctx = sycamore.init(ExecMode.LOCAL)
+        # print("Print 1")
+        # # Set the embedding model and its parameters
         # model_name = "sentence-transformers/all-MiniLM-L6-v2"
         # max_tokens = 512
         # dimensions = 384
 
-        # Initialize the tokenizer
+        # # Initialize the tokenizer
         # tokenizer = HuggingFaceTokenizer(model_name)
         # print("Print 2")
         # # Process the document
@@ -98,20 +99,18 @@ def upload_embedding():
         # )
         # print("Print 4")
         # Load the same embedding model
-        model_name = "all-MiniLM-L6-v2"
-        embedder = SentenceTransformer(model_name)
+        # model_name = "all-MiniLM-L6-v2"
+        # embedder = SentenceTransformer(model_name)
         
-        pinecone_context = pinecone_retrieval(user_prompt_text, ctx, embedder)
-        pinecone_context = "Common Gateway Interface (CGI) is a mechanism by which programs, called scripts, can be used to create dynamic Web documents. Scripts are placed in a server directory often named cgi-bin. Scripts can deliver information that is not directly readable by clients. Scripts dynamically convert data from a non-Web source (e.g., DBMS) into a Web-compatible document Current version of CGI is 1.1. The reason for the term “common gateway” is these programs act as gateways between the WWW and any other type of data or service."
-        # import pdb; pdb.set_trace()
-        if type_of_question=="mcq":
-            questions = generate_mcq(pinecone_context, number_of_questions)
-        elif type_of_question=="short":
-            questions = generate_shortq(pinecone_context, number_of_questions)
+        # pinecone_context = pinecone_retrieval(user_prompt_text, ctx, embedder)
         # if type_of_question=="mcq":
-        #     questions = generate_mcq(user_prompt_text, number_of_questions)
+        #     questions = generate_mcq(pinecone_context, number_of_questions)
         # elif type_of_question=="short":
-        #     questions = generate_shortq(user_prompt_text, number_of_questions)
+        #     questions = generate_shortq(pinecone_context, number_of_questions)
+        if type_of_question=="mcq":
+            questions = generate_mcq(user_prompt_text, number_of_questions)
+        elif type_of_question=="short":
+            questions = generate_shortq(user_prompt_text, number_of_questions)
         print("Reached here")
         return questions
 
@@ -129,10 +128,11 @@ def verify():
             return jsonify({"error": "Invalid input. 'question' and 'answer' are required."}), 400
 
         question = data['question']
+        llm_answer = data['llm_answer']
         user_answer = data['answer']
 
         # Verify the answer using verifier.py
-        result = verify_short_answer(question, user_answer)
+        result = verify_short_answer(question, user_answer, llm_answer)
 
         if not result:
             return jsonify({"error": "Verification failed."}), 500
@@ -142,6 +142,18 @@ def verify():
             "correct_answer": result.get('correct_answer'),
             "explanation": result.get('explanation')
         }), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/generate-handout', methods=['POST'])
+def generate_handout_endpoint():
+    try:
+        # Call the generate_handout function
+        handout_paragraph = generate_handout()
+
+        # Return the generated handout paragraph
+        return jsonify({"handout": handout_paragraph}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
