@@ -10,3 +10,5 @@ venv/
 env/
 env
 __pycache__/
+videos/*
+videos_1/*

@@ -101,49 +101,50 @@ class TwelveLabsSearch:
             return None
 
             
-    def search_video(query):
-        query_text_list = [
-        query,
-        ]
-        
-        file_name = "data/data.json"
-        
-        searcher = TwelveLabsSearch()
-        # Call with a list of queries and a file name to save the combined results as JSON
-        results = searcher.query(query_text_list, file_name=file_name)
-        
-        # import pdb; pdb.set_trace()
-        video_info = TwelveLabsSearch.get_video_info(video_id=results[0][0]['video_id'])
-        video_url = video_info['hls']['video_url']
-        # import pdb; pdb.set_trace()  
-        download_and_crop_video(video_url,'extracted_clip.mp4')#, results[0][0]['start'], results[0][0]['end'])
-        return (f'./videos{results[0][0]['video_id']}', results[0][0]['start'])
-
-
-
-def download_and_crop_video(video_url, output_path):   #, start_time, end_time):
-    try:
-        print(f"Loading video from {video_url}...")
-        
-        # Load the video directly from the URL using MoviePy
-        clip = VideoFileClip(video_url)
-        
-        # print(f"Cropping video from {start_time} to {end_time} seconds...")
-        
-        # Extract the subclip
-        # subclip = clip.subclip(start_time, end_time)
-        
-        # Write the subclip to the output file
-        clip.write_videofile(output_path, codec="libx264")
-        
-        print(f"Video cropped successfully and saved to {output_path}")
+def search_video(query):
+    query_text_list = [
+    query,
+    ]
     
-    except Exception as e:
-        print("Error processing video:", str(e))
+    file_name = "data/data.json"
+    
+    searcher = TwelveLabsSearch()
+    # Call with a list of queries and a file name to save the combined results as JSON
+    results = searcher.query(query_text_list, file_name=file_name)
+    
+    # import pdb; pdb.set_trace()
+    video_info = TwelveLabsSearch.get_video_info(video_id=results[0][0]['video_id'])
+    video_url = video_info['hls']['video_url']
+    # import pdb; pdb.set_trace()  
+    # download_and_crop_video(video_url,'extracted_clip.mp4')#, results[0][0]['start'], results[0][0]['end'])
+    # import pdb; pdb.set_trace()
+    return (f"./videos/{results[0][0]['video_id']}.mp4", results[0][0]['start'])
+
+# print(search_video("Introduction"))
+
+# def download_and_crop_video(video_url, output_path):   #, start_time, end_time):
+#     try:
+#         print(f"Loading video from {video_url}...")
         
-    finally:
-        # Close the clips to release resources
-        if 'clip' in locals():
-            clip.close()
-        # if 'subclip' in locals():
-        #     subclip.close()
+#         # Load the video directly from the URL using MoviePy
+#         clip = VideoFileClip(video_url)
+        
+#         # print(f"Cropping video from {start_time} to {end_time} seconds...")
+        
+#         # Extract the subclip
+#         # subclip = clip.subclip(start_time, end_time)
+        
+#         # Write the subclip to the output file
+#         clip.write_videofile(output_path, codec="libx264")
+        
+#         print(f"Video cropped successfully and saved to {output_path}")
+    
+#     except Exception as e:
+#         print("Error processing video:", str(e))
+        
+#     finally:
+#         # Close the clips to release resources
+#         if 'clip' in locals():
+#             clip.close()
+#         # if 'subclip' in locals():
+#         #     subclip.close()

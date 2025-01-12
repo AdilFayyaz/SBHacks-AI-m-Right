@@ -50,7 +50,7 @@ def download_and_upload_video(youtube_url, api_key=os.getenv("TWELVE_LABS_KEY"),
         ydl.download([youtube_url])
     
     print("Video download completed!")
-
+    # import pdb; pdb.set_trace()
     # Get the downloaded video path (assuming only one video is downloaded)
     downloaded_video_path = next((f for f in os.listdir(path) if f.endswith(('.mp4', '.mkv', '.webm'))), None)
     if not downloaded_video_path:
@@ -58,10 +58,7 @@ def download_and_upload_video(youtube_url, api_key=os.getenv("TWELVE_LABS_KEY"),
 
     # Upload the video to Twelve Labs
     file_path = os.path.join(path, downloaded_video_path)
-    task = client.task.create(
-        index_id=index_id,
-        file=file_path
-    )
+    task = client.task.create(index_id=index_id,file=file_path)
 
     video_id = task.video_id
     print(f"Video uploaded successfully. Video ID: {video_id}")
@@ -72,4 +69,4 @@ def download_and_upload_video(youtube_url, api_key=os.getenv("TWELVE_LABS_KEY"),
     os.rename(file_path, new_file_path)
     print(f"Temporary video file renamed to {new_file_name} and kept at {path}.")
 # Example usage
-# download_and_upload_video("https://youtu.be/Qf6OVR8MLnU?si=5fA3ojCw_zzo97FM")
+# download_and_upload_video("https://youtu.be/UdEX0E9lIQM?si=YARcY_TJu8nqig6d")
