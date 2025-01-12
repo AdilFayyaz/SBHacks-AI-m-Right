@@ -9,4 +9,4 @@ share/
 venv/
 env/
 env
-requirements.txt
+__pycache__/

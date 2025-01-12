@@ -3,6 +3,8 @@ import random
 from fpdf import FPDF
 from io import BytesIO
 import os
+import requests
+import json
 
 # Set up the landing page title
 st.title("QuizzIt!")
@@ -31,9 +33,15 @@ def generate_questions(num):
         questions.append(question)
     return questions
 
-def handle_submit(slider_val, question_type, user_prompt):
+def handle_submit(filepath, slider_val, question_type, user_prompt):
     """Handle submit button click on landing page."""
-    st.session_state.questions = generate_questions(st.session_state.slider_value)
+    data = {"file_name": filepath,
+        "type_of_question": question_type,
+        "number_of_questions": slider_val,
+        "user_prompt_text": user_prompt}
+    st.session_state.questions = requests.post(url="http://127.0.0.1:5000/upload-embedding", json=data)
+    print(type(st.session_state.questions))
+    # st.session_state.questions = generate_questions(st.session_state.slider_value)
     st.session_state.quiz_state = "quiz"
     st.session_state.current_question = 0
     st.session_state.feedback = ""
@@ -46,18 +54,18 @@ def handle_handout_gen():
 def handle_submit_answer():
     """Handle submit answer button click on quiz page."""
     current_index = st.session_state.current_question
-    questions = st.session_state.questions
+    questions = st.session_state.questions.json()
     question = questions[current_index]
 
     if st.session_state.selected_option is not None:
-        if st.session_state.selected_option == question["answer"]:
+        if st.session_state.selected_option == question["options"][question["correct_answer"]]:
             st.session_state.feedback = "<span style='color: green; font-weight: bold;'>Correct answer!</span>"
             st.session_state.score += 1
         else:
-            st.session_state.feedback = f"<span style='color: red; font-weight: bold;'>Incorrect answer. The correct answer is {question['answer']}.</span>"
+            st.session_state.feedback = f"<span style='color: red; font-weight: bold;'>Incorrect answer. The correct answer is {question['correct_answer']}.</span>"
             st.session_state.incorrect_answers.append({
                 "question": question["question"],
-                "correct_answer": question["answer"],
+                "correct_answer": question["correct_answer"],
                 "selected_answer": st.session_state.selected_option
             })
     else:
@@ -121,6 +129,7 @@ def generate_pdf_handout():
 
 # Landing page logic
 if st.session_state.quiz_state == "landing":
+    file_path = None
     uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
     if uploaded_file is not None:
         filename = uploaded_file.name[:-4]
@@ -137,17 +146,22 @@ if st.session_state.quiz_state == "landing":
         ("MCQ", "Short Answer")
     )
 
+    if st.session_state.question_type == "MCQ":
+        st.session_state.question_type = "mcq"
+    else:
+        st.session_state.question_type = "short"
+
     text_input = st.text_input("Enter your text here")
 
     col1, col2, col3 = st.columns([3, 5, 14])
     with col1:
-        st.button("Submit", on_click=handle_submit, args=(st.session_state.slider_value, st.session_state.question_type, text_input))
+        st.button("Submit", on_click=handle_submit, args=(file_path, st.session_state.slider_value, st.session_state.question_type, text_input))
     with col2:
         st.button("Generate Handout", on_click=handle_handout_gen)
 
 # Quiz page logic
 elif st.session_state.quiz_state == "quiz":
-    questions = st.session_state.questions
+    questions = st.session_state.questions.json()
     current_index = st.session_state.current_question
     tot_ques = len(questions)
     if current_index < tot_ques:
