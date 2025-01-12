@@ -23,6 +23,8 @@ from pinecone_fetch import pinecone_retrieval
 from sentence_transformers import SentenceTransformer
 from handout_gen import generate_handout
 from upload import download_and_upload_video
+from marengo_search import TwelveLabsSearch
+
 # Load environment variables
 load_dotenv()
 ARYN_API_KEY = os.getenv("ARYN_API_KEY")
@@ -163,8 +165,19 @@ def upload_video():
         youtube_url = data['youtube_url']
         download_and_upload_video(youtube_url=youtube_url)
 
-        # Return the generated handout paragraph
         return 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/query-video', methods=['POST'])
+def query_video():
+    try:
+        data = request.get_json()
+        query = data['query']
+        
+        output_path, start_time = TwelveLabsSearch.search_video(query)
+        return jsonify({"output_path": output_path, "start_time": start_time}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
