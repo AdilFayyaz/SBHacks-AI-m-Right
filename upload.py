@@ -70,4 +70,4 @@ def download_and_upload_video(youtube_url, api_key=os.getenv("TWELVE_LABS_KEY"),
     print(f"Temporary video file {file_path} deleted.")
 
 # Example usage
-download_and_upload_video("https://youtu.be/Qf6OVR8MLnU?si=5fA3ojCw_zzo97FM")
+# download_and_upload_video("https://youtu.be/Qf6OVR8MLnU?si=5fA3ojCw_zzo97FM")

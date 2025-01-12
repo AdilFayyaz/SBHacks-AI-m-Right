@@ -139,38 +139,105 @@ def generate_pdf_handout():
     pdf_output.seek(0)
     return pdf_output
 
+def handle_upload_video(video_url):
+    data = {
+        "youtube_url": video_url,
+    }
+    results = requests.post("http://127.0.0.1:5000/upload-video", json=data)
+
+def handle_query_video(query):
+    data = {
+        "query": query,
+    }
+    import pdb; pdb.set_trace()
+    results = requests.post("http://127.0.0.1:5000/query-video", json=data).json()
+    output_path = results['output_path']
+    start_time = results['start_time']
+
+    video_file = open(output_path, "rb")
+    video_bytes = video_file.read()
+    st.video(video_bytes, start_time=start_time)  # Starts playback at 10 seconds
+
+
+# Landing page logic
+# if st.session_state.quiz_state == "landing":
+#     file_path = None
+#     uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
+#     if uploaded_file is not None:
+#         filename = uploaded_file.name[:-4]
+#         file_path = f"{filename}_{random.randint(1000, 9999)}.pdf"
+#         with open(file_path, "wb") as f:
+#             f.write(uploaded_file.read())
+#         st.success(f"PDF uploaded successfully!")
+#         st.session_state.uploaded_file_path = file_path 
+#         st.session_state.file_uploaded = True
+
+#     st.session_state.slider_value = st.slider("Choose the number of questions (1-5)", min_value=1, max_value=5, value=3)
+
+#     st.session_state.question_type = st.radio(
+#         "Select question type:",
+#         ("MCQ", "Short Answer")
+#     )
+
+#     if st.session_state.question_type == "MCQ":
+#         st.session_state.question_type = "mcq"
+#     else:
+#         st.session_state.question_type = "short"
+
+#     text_input = st.text_input("Enter your text here")
+
+#     col1, col2, col3 = st.columns([3, 5, 14])
+#     with col1:
+#         st.button("Submit", on_click=handle_submit, args=(file_path, st.session_state.slider_value, st.session_state.question_type, text_input))
+#     with col2:
+#         st.button("Generate Handout", on_click=handle_handout_gen, args=(text_input, ))
+
 # Landing page logic
 if st.session_state.quiz_state == "landing":
-    file_path = None
-    uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
-    if uploaded_file is not None:
-        filename = uploaded_file.name[:-4]
-        file_path = f"{filename}_{random.randint(1000, 9999)}.pdf"
-        with open(file_path, "wb") as f:
-            f.write(uploaded_file.read())
-        st.success(f"PDF uploaded successfully!")
-        st.session_state.uploaded_file_path = file_path 
-        st.session_state.file_uploaded = True
+    tabs = st.tabs(["Quiz", "Lecture Video"])
 
-    st.session_state.slider_value = st.slider("Choose the number of questions (1-5)", min_value=1, max_value=5, value=3)
+    # Quiz Tab
+    with tabs[0]:
+        file_path = None
+        uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
+        if uploaded_file is not None:
+            filename = uploaded_file.name[:-4]
+            file_path = f"{filename}_{random.randint(1000, 9999)}.pdf"
+            with open(file_path, "wb") as f:
+                f.write(uploaded_file.read())
+            st.success(f"PDF uploaded successfully!")
+            st.session_state.uploaded_file_path = file_path 
+            st.session_state.file_uploaded = True
 
-    st.session_state.question_type = st.radio(
-        "Select question type:",
-        ("MCQ", "Short Answer")
-    )
+        st.session_state.slider_value = st.slider("Choose the number of questions (1-5)", min_value=1, max_value=5, value=3)
 
-    if st.session_state.question_type == "MCQ":
-        st.session_state.question_type = "mcq"
-    else:
-        st.session_state.question_type = "short"
+        st.session_state.question_type = st.radio(
+            "Select question type:",
+            ("MCQ", "Short Answer")
+        )
 
-    text_input = st.text_input("Enter your text here")
+        if st.session_state.question_type == "MCQ":
+            st.session_state.question_type = "mcq"
+        else:
+            st.session_state.question_type = "short"
 
-    col1, col2, col3 = st.columns([3, 5, 14])
-    with col1:
-        st.button("Submit", on_click=handle_submit, args=(file_path, st.session_state.slider_value, st.session_state.question_type, text_input))
-    with col2:
-        st.button("Generate Handout", on_click=handle_handout_gen, args=(text_input, ))
+        text_input = st.text_input("Enter your text here")
+
+        col1, col2, col3 = st.columns([3, 5, 14])
+        with col1:
+            st.button("Submit", on_click=handle_submit, args=(file_path, st.session_state.slider_value, st.session_state.question_type, text_input))
+        with col2:
+            st.button("Generate Handout", on_click=handle_handout_gen, args=(text_input, ))
+
+    # Lecture Video Tab
+    with tabs[1]:
+        video_url = st.text_input("Enter the URL of the lecture video", key="lecture_video_url")
+        st.button("Upload Video", key="submit_video", on_click=handle_upload_video, args=(video_url, ))
+
+        query = st.text_area("Query the lecture video", key="lecture_notes", placeholder="Enter your query here...")
+
+        st.button("Submit Notes", key="submit_notes", on_click=handle_query_video, args=(query, ))
+
 
 # Quiz page logic
 elif st.session_state.quiz_state == "quiz":
