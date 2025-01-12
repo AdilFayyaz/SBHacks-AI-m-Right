@@ -117,7 +117,7 @@ class TwelveLabsSearch:
         video_url = video_info['hls']['video_url']
         # import pdb; pdb.set_trace()  
         download_and_crop_video(video_url,'extracted_clip.mp4')#, results[0][0]['start'], results[0][0]['end'])
-        return ('extracted_clip.mp4', results[0][0]['start'])
+        return (f'./videos{results[0][0]['video_id']}', results[0][0]['start'])
 
 
 
