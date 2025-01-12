@@ -7,7 +7,7 @@ import requests
 import json
 
 # Set up the landing page title
-st.title("AI'm I Right?")
+st.title("AI'm Right!")
 
 # Session state to manage quiz state
 if "quiz_state" not in st.session_state:
@@ -154,7 +154,7 @@ def handle_query_video(query):
     output_path = results['output_path']
     start_time = results['start_time']
 
-    video_file = open(output_path, "rb")
+    video_file = open("D:/SBHacksXI/SBHacks/videos/6783cc353d8c70ded5663f7d.mp4", "rb")
     video_bytes = video_file.read()
     st.video(video_bytes, start_time=start_time)  # Starts playback at 10 seconds
 

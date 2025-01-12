@@ -62,85 +62,87 @@ def upload_embedding():
 
         # Initialize the Sycamore context
         ctx = sycamore.init(ExecMode.LOCAL)
-        print("Print 1")
-        initial_docset = ctx.read.binary(paths = file_path, binary_format = "pdf")
+        # print("Print 1")
+        # initial_docset = ctx.read.binary(paths = file_path, binary_format = "pdf")
         
-        # shutil.rmtree("./pc-tutorial/partitioned", ignore_errors=True)
+        # try:
+        #     shutil.rmtree("./pc-tutorial/partitioned", ignore_errors=True)
+        # except:
+        #     a=1
+        # # Set your Aryn API key. See https://sycamore.readthedocs.io/en/stable/aryn_cloud/accessing_the_partitioning_service.html#using-sycamore-s-partition-transform
+
+        # partitioned_docset = (
+        #         initial_docset.partition(partitioner=ArynPartitioner(extract_images=False,  extract_table_structure=True, use_ocr=True))
+        #         .materialize(path="./pc-tutorial/partitioned", source_mode=sycamore.materialize_config.MaterializeSourceMode.IF_PRESENT)
+        # )
+        # partitioned_docset.execute()
         
-        # Set your Aryn API key. See https://sycamore.readthedocs.io/en/stable/aryn_cloud/accessing_the_partitioning_service.html#using-sycamore-s-partition-transform
-
-        partitioned_docset = (
-                initial_docset.partition(partitioner=ArynPartitioner(extract_images=False,  extract_table_structure=True, use_ocr=True))
-                .materialize(path="./pc-tutorial/partitioned", source_mode=sycamore.materialize_config.MaterializeSourceMode.IF_PRESENT)
-        )
-        partitioned_docset.execute()
+        # regex_docset = partitioned_docset.regex_replace(COALESCE_WHITESPACE)
         
-        regex_docset = partitioned_docset.regex_replace(COALESCE_WHITESPACE)
-        
-        llm = OpenAI(OpenAIModels.GPT_4O.value, api_key=os.environ["OPENAI_API_KEY"])
+        # llm = OpenAI(OpenAIModels.GPT_4O.value, api_key=os.environ["OPENAI_API_KEY"])
 
-        enriched_docset = (regex_docset
-            .with_property('_schema_class', lambda d: 'LectureSlides')
-            .with_property('_schema', lambda d: {
-                    'type': 'object',
-            'properties': {
-                'topicName': {'type': 'string'},
-                'keyConcepts': {'type': 'string'}
-            },
-            'required': ['keyConcepts']}
-                        )
-            .extract_properties(property_extractor=OpenAIPropertyExtractor(llm=llm, num_of_elements=35))
-        )
+        # enriched_docset = (regex_docset
+        #     .with_property('_schema_class', lambda d: 'LectureSlides')
+        #     .with_property('_schema', lambda d: {
+        #             'type': 'object',
+        #     'properties': {
+        #         'topicName': {'type': 'string'},
+        #         'keyConcepts': {'type': 'string'}
+        #     },
+        #     'required': ['keyConcepts']}
+        #                 )
+        #     .extract_properties(property_extractor=OpenAIPropertyExtractor(llm=llm, num_of_elements=35))
+        # )
         
 
-        # Step 2: Define a custom tokenizer class
-        class CustomTokenizer:
-            def __init__(self, tokenizer, max_tokens):
-                self.tokenizer = tokenizer
-                self.max_tokens = max_tokens
+        # # Step 2: Define a custom tokenizer class
+        # class CustomTokenizer:
+        #     def __init__(self, tokenizer, max_tokens):
+        #         self.tokenizer = tokenizer
+        #         self.max_tokens = max_tokens
 
-            def tokenize(self, text):
-                # Tokenize the input text using Hugging Face tokenizer
-                tokens = self.tokenizer.tokenize(text)
-                return tokens
+        #     def tokenize(self, text):
+        #         # Tokenize the input text using Hugging Face tokenizer
+        #         tokens = self.tokenizer.tokenize(text)
+        #         return tokens
 
-            def token_count(self, text):
-                # Count tokens for the given text
-                return len(self.tokenize(text))
+        #     def token_count(self, text):
+        #         # Count tokens for the given text
+        #         return len(self.tokenize(text))
 
-            def truncate(self, text):
-                # Truncate the text to fit within max tokens
-                tokens = self.tokenize(text)
-                if len(tokens) > self.max_tokens:
-                    tokens = tokens[:self.max_tokens]
-                return self.tokenizer.convert_tokens_to_string(tokens)
+        #     def truncate(self, text):
+        #         # Truncate the text to fit within max tokens
+        #         tokens = self.tokenize(text)
+        #         if len(tokens) > self.max_tokens:
+        #             tokens = tokens[:self.max_tokens]
+        #         return self.tokenizer.convert_tokens_to_string(tokens)
 
-        # Step 3: Initialize the custom tokenizer
-        max_tokens = 8192
-        tokenizer = CustomTokenizer(tokenizer=hf_tokenizer, max_tokens=max_tokens)
+        # # Step 3: Initialize the custom tokenizer
+        # max_tokens = 8192
+        # tokenizer = CustomTokenizer(tokenizer=hf_tokenizer, max_tokens=max_tokens)
 
-        chunked_docset = (enriched_docset
-            .mark_bbox_preset(tokenizer=tokenizer, token_limit=max_tokens)
-            .merge(merger=MarkedMerger())
-            .split_elements(tokenizer=tokenizer, max_tokens=max_tokens)
-        )
-        exploded_docset = chunked_docset.spread_properties(["path", "entity"]).explode()
-        model_name = "sentence-transformers/all-MiniLM-L6-v2"
+        # chunked_docset = (enriched_docset
+        #     .mark_bbox_preset(tokenizer=tokenizer, token_limit=max_tokens)
+        #     .merge(merger=MarkedMerger())
+        #     .split_elements(tokenizer=tokenizer, max_tokens=max_tokens)
+        # )
+        # exploded_docset = chunked_docset.spread_properties(["path", "entity"]).explode()
+        # model_name = "sentence-transformers/all-MiniLM-L6-v2"
 
-        embedded_ds = (
-            exploded_docset
-            # Embed each Document. You can change the embedding model. Make your target vector index matches this number of dimensions.
-            .embed(embedder=SentenceTransformerEmbedder(model_name=model_name))
-        )
+        # embedded_ds = (
+        #     exploded_docset
+        #     # Embed each Document. You can change the embedding model. Make your target vector index matches this number of dimensions.
+        #     .embed(embedder=SentenceTransformerEmbedder(model_name=model_name))
+        # )
         
-        embedding_dim = 384
+        # embedding_dim = 384
 
-        embedded_ds.write.pinecone(
-            index_name="sbhacks",
-            index_spec=pinecone.ServerlessSpec(cloud="aws", region="us-east-1"),
-            dimensions=embedding_dim,
-            distance_metric="cosine",
-        )
+        # embedded_ds.write.pinecone(
+        #     index_name="sbhacks",
+        #     index_spec=pinecone.ServerlessSpec(cloud="aws", region="us-east-1"),
+        #     dimensions=embedding_dim,
+        #     distance_metric="cosine",
+        # )
 
         # Set the embedding model and its parameters
         # model_name = "sentence-transformers/all-MiniLM-L6-v2"
@@ -264,7 +266,7 @@ def query_video():
         data = request.get_json()
         query = data['query']
         
-        output_path, start_time = TwelveLabsSearch.search_video(query)
+        output_path, start_time = search_video(query)
         return jsonify({"output_path": output_path, "start_time": start_time}), 200
 
     except Exception as e:
