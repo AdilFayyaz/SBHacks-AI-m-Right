@@ -7,6 +7,7 @@ The reference is a list of passages, and the claim is represented as a sentence/
 - If NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.
 - Please DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.
 - Add the reason why the answer is that particular specifying what is wrong in the claim in one sentence with mentioning anything about the reference.
+- DO NOT MENTION THE WORD REFERENCE IN THE REASON
 
 Your answer should ALWAYS be only in the format with two keys as "output" and "reason".
 

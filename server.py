@@ -22,6 +22,8 @@ from shortq_gen import generate_shortq
 from pinecone_fetch import pinecone_retrieval
 from sentence_transformers import SentenceTransformer
 from handout_gen import generate_handout
+from upload import download_and_upload_video
+from marengo_search import TwelveLabsSearch
 
 # Load environment variables
 load_dotenv()
@@ -153,6 +155,30 @@ def generate_handout_endpoint():
 
         # Return the generated handout paragraph
         return jsonify({"handout": handout_paragraph}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/upload-video', methods=['POST'])
+def upload_video():
+    try:
+        data = request.get_json()
+        youtube_url = data['youtube_url']
+        download_and_upload_video(youtube_url=youtube_url)
+
+        return 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/query-video', methods=['POST'])
+def query_video():
+    try:
+        data = request.get_json()
+        query = data['query']
+        
+        output_path, start_time = TwelveLabsSearch.search_video(query)
+        return jsonify({"output_path": output_path, "start_time": start_time}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500

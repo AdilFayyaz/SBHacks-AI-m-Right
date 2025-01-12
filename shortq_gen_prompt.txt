@@ -14,7 +14,7 @@ The World Wide Web (WWW) is an information system enabling access to interlinked
 
 {
     "question": "What are the three core technologies of the World Wide Web, and what role does each play?",
-    "llm_answer":The three core technologies of the World Wide Web are HTTP, HTML, and URIs. HTTP enables communication between browsers and servers, HTML structures and displays web content, and URIs uniquely identify resources on the web. Together, they enable global information sharing and interaction.
+    "llm_answer": "The three core technologies of the World Wide Web are HTTP, HTML, and URIs. HTTP enables communication between browsers and servers, HTML structures and displays web content, and URIs uniquely identify resources on the web. Together, they enable global information sharing and interaction."
 }
 
 ##Passage:

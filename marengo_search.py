@@ -3,9 +3,9 @@ from twelvelabs import TwelveLabs
 import json
 import requests
 import os
-
+from moviepy import *
 from dotenv import load_dotenv
-
+from moviepy import VideoFileClip
 
 # Load .env file
 load_dotenv()
@@ -100,45 +100,51 @@ class TwelveLabsSearch:
             print(f"Error: Status code {response.status_code}")
             return None
 
-def download_and_crop_video(video_url, output_path, start_time, end_time):
-    try:
-        print(f"Loading video from {video_url}...")
+    def download_and_crop_video(video_url, output_path, start_time, end_time):
+        try:
+            print(f"Loading video from {video_url}...")
+            
+            # Load the video directly from the URL using MoviePy
+            clip = VideoFileClip(video_url)
+            
+            # print(f"Cropping video from {start_time} to {end_time} seconds...")
+            
+            # Extract the subclip
+            # subclip = clip.subclip(start_time, end_time)
+            
+            # Write the subclip to the output file
+            clip.write_videofile(output_path, codec="libx264")
+            
+            print(f"Video cropped successfully and saved to {output_path}")
         
-        # Load the video directly from the URL using MoviePy
-        clip = VideoFileClip(video_url)
+        except Exception as e:
+            print("Error processing video:", str(e))
+            
+        finally:
+            # Close the clips to release resources
+            if 'clip' in locals():
+                clip.close()
+            # if 'subclip' in locals():
+            #     subclip.close()
+            
+    def search_video(query):
+        query_text_list = [
+        query,
+        ]
         
-        print(f"Cropping video from {start_time} to {end_time} seconds...")
+        file_name = "data/data.json"
         
-        # Extract the subclip
-        subclip = clip.subclip(start_time, end_time)
+        searcher = TwelveLabsSearch()
+        # Call with a list of queries and a file name to save the combined results as JSON
+        results = searcher.query(query_text_list, file_name=file_name)
         
-        # Write the subclip to the output file
-        subclip.write_videofile(output_path, codec="libx264")
-        
-        print(f"Video cropped successfully and saved to {output_path}")
-        
-    except Exception as e:
-        print("Error processing video:", str(e))
-        
-    finally:
-        # Close the clips to release resources
-        if 'clip' in locals():
-            clip.close()
-        if 'subclip' in locals():
-            subclip.close()
- 
+        # import pdb; pdb.set_trace()
+        video_info = TwelveLabsSearch.get_video_info(video_id=results[0][0]['video_id'])
+        video_url = video_info['hls']['video_url']
+        # import pdb; pdb.set_trace()  
+        searcher.download_and_crop_video(video_url,'extracted_clip.mp4', results[0][0]['start'], results[0][0]['end'])
+        return ('extracted_clip.mp4', results[0][0]['start'])
 
 # Example usage
 if __name__ == "__main__":
-    query_text_list = [
-        "Boolean Flags",
-    ]
-    
-    file_name = "data/data.json"
-    
-    searcher = TwelveLabsSearch()
-    # Call with a list of queries and a file name to save the combined results as JSON
-    results = searcher.query(query_text_list, file_name=file_name)
-    print(results)
-    
-
+    print("")
