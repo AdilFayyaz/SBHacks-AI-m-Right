@@ -17,6 +17,9 @@ from sycamore.transforms.summarize_images import SummarizeImages
 from sycamore.context import ExecMode
 from pinecone import ServerlessSpec
 from dotenv import load_dotenv
+from Verifier.verifier import verify_short_answer
+from Quiz_gen.mcq_gen import generate_mcq
+from Quiz_gen.shortq_gen import generate_shortq
 
 # Load environment variables
 load_dotenv()
@@ -28,15 +31,20 @@ app = Flask(__name__)
 @app.route('/upload-embedding', methods=['POST'])
 def upload_embedding():
     try:
-        # Get file from the request
-        if 'file' not in request.files:
-            return jsonify({"error": "No file provided"}), 400
+        # Parse request data
+        data = request.get_json()
+        if not data or 'file_name' not in data or 'type_of_question' not in data or 'number_of_questions' not in data or 'user_prompt_text' not in data:
+            return jsonify({"error": "Invalid input. 'file_name', 'type_of_question', 'number_of_questions', and 'user_prompt_text' are required."}), 400
 
-        file = request.files['file']
+        file_name = data['file_name']
+        type_of_question = data['type_of_question']
+        number_of_questions = data['number_of_questions']
+        user_prompt_text = data['user_prompt_text']
 
-        # Save the file temporarily
-        file_path = os.path.join("/tmp", file.filename)
-        file.save(file_path)
+        # Access the file from the specified path
+        file_path = os.path.join("/tmp", file_name)
+        if not os.path.exists(file_path):
+            return jsonify({"error": f"File {file_name} does not exist at the specified path."}), 404
 
         # Initialize the Sycamore context
         ctx = sycamore.init(ExecMode.LOCAL)
@@ -86,7 +94,40 @@ def upload_embedding():
             index_spec=spec
         )
 
-        return jsonify({"message": "File successfully processed and embeddings uploaded to Pinecone."}), 200
+        if type_of_question=="mcq": 
+            questions = generate_mcq(user_prompt_text, number_of_questions)
+        elif type_of_question=="short":
+            questions = generate_shortq(user_prompt_text, number_of_questions)
+        
+        return questions#jsonify({"message": "File successfully processed and embeddings uploaded to Pinecone."}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+    
+
+@app.route('/verify-short', methods=['POST'])
+def verify():
+    try:
+        # Parse request data
+        data = request.get_json()
+        if not data or 'question' not in data or 'answer' not in data:
+            return jsonify({"error": "Invalid input. 'question' and 'answer' are required."}), 400
+
+        question = data['question']
+        user_answer = data['answer']
+
+        # Verify the answer using verifier.py
+        result = verify_short_answer(question, user_answer)
+
+        if not result:
+            return jsonify({"error": "Verification failed."}), 500
+
+        # Return the correct answer and explanation
+        return jsonify({
+            "correct_answer": result.get('correct_answer'),
+            "explanation": result.get('explanation')
+        }), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
