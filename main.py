@@ -16,22 +16,10 @@ if "quiz_state" not in st.session_state:
     st.session_state.current_question = 0
     st.session_state.score = 0
     st.session_state.feedback = ""
+    st.session_state.short_ans = None
     st.session_state.selected_option = None
     st.session_state.handout_generated = False
     st.session_state.incorrect_answers = []
-
-def generate_questions(num):
-    """Generate random questions and answers."""
-    questions = []
-    for i in range(num):
-        question = {
-            "question": f"What is the result of {i + 1} + {i + 2}?",
-            "options": [i + 1, i + 2, i + 3, i + 4],
-            "answer": i + 3
-        }
-        random.shuffle(question["options"])
-        questions.append(question)
-    return questions
 
 def handle_submit(filepath, slider_val, question_type, user_prompt):
     """Handle submit button click on landing page."""
@@ -40,8 +28,6 @@ def handle_submit(filepath, slider_val, question_type, user_prompt):
         "number_of_questions": slider_val,
         "user_prompt_text": user_prompt}
     st.session_state.questions = requests.post(url="http://127.0.0.1:5000/upload-embedding", json=data)
-    print(type(st.session_state.questions))
-    # st.session_state.questions = generate_questions(st.session_state.slider_value)
     st.session_state.quiz_state = "quiz"
     st.session_state.current_question = 0
     st.session_state.feedback = ""
@@ -51,34 +37,42 @@ def handle_handout_gen():
     st.session_state.quiz_state = "handout"
     st.session_state.handout_generated = True
 
-def handle_submit_answer():
+def handle_submit_answer(question_type):
     """Handle submit answer button click on quiz page."""
     current_index = st.session_state.current_question
     questions = st.session_state.questions.json()
     question = questions[current_index]
 
-    if st.session_state.selected_option is not None:
-        if st.session_state.selected_option == question["options"][question["correct_answer"]]:
-            st.session_state.feedback = "<span style='color: green; font-weight: bold;'>Correct answer!</span>"
-            st.session_state.score += 1
+    if question_type == "mcq":
+        if st.session_state.selected_option is not None:
+            if st.session_state.selected_option == question["options"][question["correct_answer"]]:
+                st.session_state.feedback = "<span style='color: green; font-weight: bold;'>Correct answer!</span>"
+                st.session_state.score += 1
+            else:
+                st.session_state.feedback = f"<span style='color: red; font-weight: bold;'>Incorrect answer. The correct answer is {question['correct_answer']}.</span>"
+                st.session_state.incorrect_answers.append({
+                    "question": question["question"],
+                    "correct_answer": question["correct_answer"],
+                    "selected_answer": st.session_state.selected_option
+                })
         else:
-            st.session_state.feedback = f"<span style='color: red; font-weight: bold;'>Incorrect answer. The correct answer is {question['correct_answer']}.</span>"
-            st.session_state.incorrect_answers.append({
-                "question": question["question"],
-                "correct_answer": question["correct_answer"],
-                "selected_answer": st.session_state.selected_option
-            })
+            st.warning("Please select an answer before submitting.")
     else:
-        st.warning("Please select an answer before submitting.")
+        if st.session_state.short_ans is not None:
+            data = {"question": question['question'],
+                    "llm_answer": question['llm_answer'],
+                    "answer": st.session_state.short_ans}
+            results = requests.post(url="http://127.0.0.1:5000/verify-short", json=data)
 
 def handle_next_question():
     """Handle next question button click."""
-    if st.session_state.selected_option is not None:
+    if st.session_state.selected_option is not None or st.session_state.short_ans is not None:
         st.session_state.current_question += 1
         st.session_state.feedback = ""
+        st.session_state.short_ans = None
         st.session_state.selected_option = None
     else:
-        st.warning("Please select an answer before proceeding.")
+        st.warning("Please select/type an answer before proceeding.")
 
 def handle_end_quiz():
     """Handle end quiz button click."""
@@ -92,6 +86,7 @@ def handle_end_quiz():
     st.session_state.current_question = 0
     st.session_state.score = 0
     st.session_state.feedback = ""
+    st.session_state.short_ans = None
     st.session_state.selected_option = None
     st.session_state.incorrect_answers = []
 
@@ -106,6 +101,7 @@ def handle_end_review():
     st.session_state.current_question = 0
     st.session_state.score = 0
     st.session_state.feedback = ""
+    st.session_state.short_ans = None
     st.session_state.selected_option = None
     st.session_state.incorrect_answers = []
 
@@ -169,14 +165,17 @@ elif st.session_state.quiz_state == "quiz":
         question = questions[current_index]
         st.write(f"Question {current_index + 1}/{tot_ques}: {question['question']}")
 
-        st.session_state.selected_option = st.radio(
-            "Choose an option:",
-            question["options"],
-            index=0,
-            key=f"q{current_index}"
-        )
+        if st.session_state.question_type == "mcq":
+            st.session_state.selected_option = st.radio(
+                "Choose an option:",
+                question["options"],
+                index=0,
+                key=f"q{current_index}"
+            )
+        else:
+            st.session_state.short_ans = st.text_area("Enter your answer", placeholder="Your answer here ...")
 
-        st.button("Submit Answer", key=f"submit_{current_index}", on_click=handle_submit_answer)
+        st.button("Submit Answer", key=f"submit_{current_index}", on_click=handle_submit_answer, args=(st.session_state.question_type, ))
 
         if st.session_state.feedback:
             st.markdown(st.session_state.feedback, unsafe_allow_html=True)
