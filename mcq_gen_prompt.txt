@@ -11,16 +11,16 @@ You are a course producer of a course and you have to generate multiple choice q
 DO NOT add explanations or you own reasoning to the output other than in the JSON.
 
 ##Passage:
-In Angular, the component lifecycle is a sequence of events that occur from the moment a component is instantiated until it is destroyed. A critical part of this lifecycle is the ngOnInit lifecycle hook.
+Log loss, or cross-entropy loss, measures the difference between predicted probabilities and actual labels. It penalizes overconfident incorrect predictions more severely. This metric is important for models that output probabilities.
 
 {
-    "question": "Which of the following is the primary purpose of Angular's ngOnInit lifecycle hook?",
-    "options":[
-        "It is used to handle HTTP requests when the component is destroyed.",
-        "It initializes component properties and is called once the component's inputs are set.",
-        "It checks for changes in the DOM after each user interaction.",
-        "It manages routing and navigates between components in the application."
-    ]
+    "question": "What is the primary purpose of log loss in machine learning?",
+    "options": [
+        "To measure the accuracy of a classification model.",
+        "To compute the difference between predicted probabilities and actual labels, penalizing overconfident incorrect predictions.",
+        "To optimize the number of features used in a model.",
+        "To evaluate the performance of clustering algorithms."
+    ],
     "answer": 2
 }
 
