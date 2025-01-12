@@ -23,7 +23,7 @@ from pinecone_fetch import pinecone_retrieval
 from sentence_transformers import SentenceTransformer
 from handout_gen import generate_handout
 from upload import download_and_upload_video
-from marengo_search import TwelveLabsSearch
+from marengo_search import *
 
 # Load environment variables
 load_dotenv()
