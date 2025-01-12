@@ -110,3 +110,29 @@ def generate_mcq(context,nos):
 # extracted_details= generate_mcq(passage,3)
 # print(extracted_details)
 
+# [
+# {
+# 	'question': "What is the primary purpose of Angular's ngOnInit lifecycle hook?",
+# 	'options': ['It is used to handle HTTP requests when the component is destroyed.', "It initializes component properties and is called once the component's inputs are set.", 'It checks for changes in the DOM after each user interaction.', 'It manages routing and navigates between components in the application.'],
+# 	'correct_answer': 1
+# },
+# {
+# 	'question': 'What is the Document Object Model (DOM) in the context of web development?',
+# 	'options': ['A programming interface for web documents that represents the structure of a web page as a tree of objects.', 'A framework for building web applications that uses declarative rendering.', 'A set of tools provided by Angular to safely interact with the DOM and prevent XSS vulnerabilities.', "A mechanism used by Angular to update the DOM efficiently when a component's data changes."],
+# 	'correct_answer': 0
+# },
+# {
+# 	'question': "How does Angular's change detection mechanism work?",
+# 	'options': ["It updates the DOM by re-rendering the entire page when the component's data changes.", "It checks for changes in the DOM after each user interaction and updates the component's state accordingly.", "It updates the DOM efficiently, ensuring that only the necessary elements are re-rendered when the component's data changes.", 'It manages the lifecycle of components and ensures that they are properly initialized and destroyed.'],
+# 	'correct_answer': 2
+# },
+# {
+# 	'question': 'What is the role of the Renderer2 in Angular?',
+# 	'options': ['It is a tool provided by Angular to safely interact with the DOM and prevent XSS vulnerabilities.', "It is a mechanism used by Angular to update the DOM efficiently when a component's data changes.", 'It is a framework for building web applications that uses declarative rendering.', 'It is a programming interface for web documents that represents the structure of a web page as a tree of objects.'],
+# 	'correct_answer': 0
+# },
+# {
+# 	'question': 'Why is understanding how Angular interacts with the DOM important?',
+# 	'options': ['It helps optimize application performance and ensure seamless user experiences.', 'It is necessary for managing component behavior in a maintainable and efficient way.', 'It is fundamental for understanding the correct use of lifecycle hooks, including ngOnInit.', 'All of the above.'],
+# 	'correct_answer': 3
+# }]

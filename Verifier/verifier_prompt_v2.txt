@@ -8,7 +8,7 @@ The reference is a list of passages, and the claim is represented as a sentence/
 - Please DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.
 - Add the reason why the answer is that particular specifying what is wrong in the claim in one sentence with mentioning anything about the reference.
 
-Your answer should ALWAYS be only in the format with two key as "output" and "reason".
+Your answer should ALWAYS be only in the format with two keys as "output" and "reason".
 
 DO NOT add explanations or you own reasoning to the output other than in the JSON.
 
