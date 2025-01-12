@@ -37,7 +37,7 @@ from dotenv import load_dotenv
 # Load .env file
 load_dotenv()
 
-def download_and_upload_video(youtube_url, api_key=os.getenv("TWELVE_LABS_KEY"), index_id=os.getenv("INDEX_ID"), path="./temp_video"):
+def download_and_upload_video(youtube_url, api_key=os.getenv("TWELVE_LABS_KEY"), index_id=os.getenv("INDEX_ID"), path="./videos"):
     # Create a TwelveLabs client
     client = TwelveLabs(api_key=api_key)
 
