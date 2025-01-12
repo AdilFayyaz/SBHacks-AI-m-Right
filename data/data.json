@@ -71,6 +71,13 @@
             "confidence": "medium"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 76.85,
+            "start": 0.0,
+            "end": 5.933333274,
+            "confidence": "medium"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 76.85,
             "start": 0.0,
@@ -134,6 +141,13 @@
             "confidence": "medium"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 75.6,
+            "start": 2026.0615182,
+            "end": 2102.55382512,
+            "confidence": "medium"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 75.51,
             "start": 4724.699952753,
@@ -159,6 +173,13 @@
             "score": 75.37,
             "start": 3994.383293389,
             "end": 4008.28329325,
+            "confidence": "medium"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 75.35,
+            "start": 1962.409504185,
+            "end": 1999.533313338,
             "confidence": "medium"
         },
         {
@@ -358,6 +379,13 @@
             "confidence": "medium"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 74.02,
+            "start": 2249.383310839,
+            "end": 2275.533310578,
+            "confidence": "medium"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 74.02,
             "start": 4209.599957904,
@@ -383,6 +411,13 @@
             "score": 73.95,
             "start": 949.366657173,
             "end": 957.66665709,
+            "confidence": "medium"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 73.94,
+            "start": 2680.433306529,
+            "end": 2688.953306443,
             "confidence": "medium"
         },
         {
@@ -568,6 +603,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 73.42,
+            "start": 2016.499979835,
+            "end": 2026.0615182,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 73.41,
             "start": 2508.66664158,
@@ -726,6 +768,13 @@
             "score": 73.12,
             "start": 1026.499989735,
             "end": 1034.766656319,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 73.1,
+            "start": 1816.913315163,
+            "end": 1845.733314876,
             "confidence": "low"
         },
         {
@@ -918,6 +967,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 72.57,
+            "start": 1904.25331429,
+            "end": 1914.166647525,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 72.55,
             "start": 92.33333241,
@@ -971,6 +1027,13 @@
             "score": 72.45,
             "start": 1798.366648683,
             "end": 1805.966648607,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 72.44,
+            "start": 2197.933311354,
+            "end": 2216.33331117,
             "confidence": "low"
         },
         {
@@ -1051,6 +1114,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 72.27,
+            "start": 1874.513314588,
+            "end": 1894.339981056,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc3027eec4fa50e7f7f",
             "score": 72.26,
             "start": 1051.339989486,
@@ -1107,6 +1177,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 72.16,
+            "start": 1953.128551897,
+            "end": 1962.409504185,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834ca9027eec4fa50e7f7d",
             "score": 72.13,
             "start": 1897.33331436,
@@ -1132,6 +1209,13 @@
             "score": 72.12,
             "start": 762.933325704,
             "end": 788.66665878,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 72.12,
+            "start": 1620.466650462,
+            "end": 1650.399983496,
             "confidence": "low"
         },
         {
@@ -1422,6 +1506,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 71.68,
+            "start": 437.266662294,
+            "end": 480.633328527,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 71.68,
             "start": 1605.733317276,
@@ -1475,6 +1566,13 @@
             "score": 71.65,
             "start": 412.516662541,
             "end": 422.158329111,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 71.65,
+            "start": 2688.953306443,
+            "end": 2697.473306357,
             "confidence": "low"
         },
         {
@@ -1639,6 +1737,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 71.45,
+            "start": 696.233326371,
+            "end": 710.299992897,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc3027eec4fa50e7f7f",
             "score": 71.45,
             "start": 1739.199982608,
@@ -1664,6 +1769,13 @@
             "score": 71.42,
             "start": 155.683331776,
             "end": 184.633331485,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 71.42,
+            "start": 2665.466640012,
+            "end": 2673.033306603,
             "confidence": "low"
         },
         {
@@ -1699,6 +1811,13 @@
             "score": 71.41,
             "start": 3604.599963954,
             "end": 3619.199963808,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 71.37,
+            "start": 1807.306648593,
+            "end": 1816.913315163,
             "confidence": "low"
         },
         {
@@ -1748,6 +1867,13 @@
             "score": 71.17,
             "start": 3422.483299107,
             "end": 3489.099965109,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 71.16,
+            "start": 1763.399982366,
+            "end": 1797.66664869,
             "confidence": "low"
         },
         {
@@ -1898,6 +2024,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 70.93,
+            "start": 2553.299974467,
+            "end": 2601.244418432,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834ca9027eec4fa50e7f7d",
             "score": 70.92,
             "start": 1456.059985439,
@@ -1951,6 +2084,13 @@
             "score": 70.86,
             "start": 1556.55553999,
             "end": 1576.99998423,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 70.85,
+            "start": 2240.66664426,
+            "end": 2249.383310839,
             "confidence": "low"
         },
         {
@@ -2017,6 +2157,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 70.71,
+            "start": 2223.733311096,
+            "end": 2232.183311011,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 70.71,
             "start": 3911.733294216,
@@ -2073,6 +2220,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 70.64,
+            "start": 1943.847599609,
+            "end": 1953.128551897,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 70.62,
             "start": 422.158329111,
@@ -2126,6 +2280,13 @@
             "score": 70.56,
             "start": 218.388886705,
             "end": 231.966664347,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 70.56,
+            "start": 1894.339981056,
+            "end": 1904.25331429,
             "confidence": "low"
         },
         {
@@ -2203,6 +2364,13 @@
             "score": 70.47,
             "start": 958.349990416,
             "end": 967.66665699,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 70.45,
+            "start": 1650.433316829,
+            "end": 1659.483316738,
             "confidence": "low"
         },
         {
@@ -2563,6 +2731,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 69.93,
+            "start": 1730.366649363,
+            "end": 1738.511093726,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 69.92,
             "start": 1168.322210539,
@@ -2588,6 +2763,13 @@
             "score": 69.9,
             "start": 2336.299976637,
             "end": 2409.649975903,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 69.88,
+            "start": 832.792148534,
+            "end": 970.403911858,
             "confidence": "low"
         },
         {
@@ -2801,6 +2983,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 69.64,
+            "start": 1402.873319303,
+            "end": 1429.233319041,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 69.63,
             "start": 3323.077744547,
@@ -2871,6 +3060,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 69.46,
+            "start": 2102.55382512,
+            "end": 2112.115363485,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 69.46,
             "start": 3052.179136144,
@@ -2917,6 +3113,20 @@
             "score": 69.38,
             "start": 930.366657363,
             "end": 947.926657187,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 69.37,
+            "start": 2436.708308965,
+            "end": 2454.924975449,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 69.35,
+            "start": 1754.833315785,
+            "end": 1763.399982366,
             "confidence": "low"
         },
         {
@@ -3151,6 +3361,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 69.09,
+            "start": 2524.533308088,
+            "end": 2553.299974467,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cbe3d8c70ded5663f66",
             "score": 69.09,
             "start": 3156.99996843,
@@ -3207,6 +3424,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.98,
+            "start": 2697.473306357,
+            "end": 2705.993306271,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 68.95,
             "start": 1281.199987188,
@@ -3253,6 +3477,13 @@
             "score": 68.9,
             "start": 1722.166649445,
             "end": 1728.399982716,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.9,
+            "start": 2345.177754326,
+            "end": 2354.366643123,
             "confidence": "low"
         },
         {
@@ -3305,6 +3536,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.86,
+            "start": 2601.244418432,
+            "end": 2639.599973604,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cbe3d8c70ded5663f66",
             "score": 68.86,
             "start": 3440.433298929,
@@ -3351,6 +3589,13 @@
             "score": 68.82,
             "start": 152.33333181,
             "end": 189.366664773,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.82,
+            "start": 1864.599981354,
+            "end": 1874.513314588,
             "confidence": "low"
         },
         {
@@ -3508,6 +3753,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.69,
+            "start": 689.199993108,
+            "end": 696.233326371,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cbe3d8c70ded5663f66",
             "score": 68.68,
             "start": 1274.433320589,
@@ -3533,6 +3785,13 @@
             "score": 68.65,
             "start": 1908.933314244,
             "end": 1917.183314161,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.65,
+            "start": 2673.066639936,
+            "end": 2680.399973196,
             "confidence": "low"
         },
         {
@@ -3571,6 +3830,20 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.59,
+            "start": 1000.549989994,
+            "end": 1013.799989862,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.58,
+            "start": 1934.566647321,
+            "end": 1943.847599609,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 68.57,
             "start": 2335.633309977,
@@ -3589,6 +3862,13 @@
             "score": 68.55,
             "start": 406.566662601,
             "end": 411.699995883,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.55,
+            "start": 1604.255539513,
+            "end": 1620.433317129,
             "confidence": "low"
         },
         {
@@ -3725,6 +4005,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.41,
+            "start": 1659.483316738,
+            "end": 1668.533316648,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 68.41,
             "start": 1765.966649007,
@@ -3830,6 +4117,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.28,
+            "start": 150.749998492,
+            "end": 160.099998399,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc3027eec4fa50e7f7f",
             "score": 68.26,
             "start": 203.966664627,
@@ -3865,10 +4159,24 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.23,
+            "start": 186.399998136,
+            "end": 205.566664611,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 68.22,
             "start": 108.566665581,
             "end": 118.157141675,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.22,
+            "start": 1845.766648209,
+            "end": 1855.166648115,
             "confidence": "low"
         },
         {
@@ -3883,6 +4191,13 @@
             "score": 68.2,
             "start": 4494.722177275,
             "end": 4503.711066074,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.19,
+            "start": 822.962736868,
+            "end": 832.792148534,
             "confidence": "low"
         },
         {
@@ -3914,6 +4229,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.17,
+            "start": 2650.33330683,
+            "end": 2665.466640012,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 68.15,
             "start": 992.833323405,
@@ -3925,6 +4247,13 @@
             "score": 68.15,
             "start": 1572.733317606,
             "end": 1582.64165084,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.14,
+            "start": 2216.366644503,
+            "end": 2223.699977763,
             "confidence": "low"
         },
         {
@@ -3953,6 +4282,13 @@
             "score": 68.09,
             "start": 2120.533312128,
             "end": 2147.658311856,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.09,
+            "start": 2232.183311011,
+            "end": 2240.633310927,
             "confidence": "low"
         },
         {
@@ -3995,6 +4331,13 @@
             "score": 68.05,
             "start": 1085.266655814,
             "end": 1090.883322424,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 68.05,
+            "start": 2112.115363485,
+            "end": 2197.899978021,
             "confidence": "low"
         },
         {
@@ -4194,6 +4537,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.88,
+            "start": 18.233333151,
+            "end": 23.466666432,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 67.88,
             "start": 2354.933309784,
@@ -4348,6 +4698,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.65,
+            "start": 1914.199980858,
+            "end": 1921.233314121,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cbe3d8c70ded5663f66",
             "score": 67.65,
             "start": 2711.933306214,
@@ -4376,6 +4733,20 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.64,
+            "start": 2495.766641709,
+            "end": 2524.533308088,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.63,
+            "start": 1429.266652374,
+            "end": 1437.408318959,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 67.62,
             "start": 1864.366648023,
@@ -4397,6 +4768,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.6,
+            "start": 1797.699982023,
+            "end": 1807.306648593,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 67.6,
             "start": 2817.399971826,
@@ -4408,6 +4786,13 @@
             "score": 67.6,
             "start": 3811.624961883,
             "end": 3833.766628329,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.59,
+            "start": 2400.274975997,
+            "end": 2436.708308965,
             "confidence": "low"
         },
         {
@@ -4457,6 +4842,20 @@
             "score": 67.54,
             "start": 1731.366649353,
             "end": 1739.199982608,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.53,
+            "start": 970.403911858,
+            "end": 980.233323531,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.53,
+            "start": 1385.299986147,
+            "end": 1402.873319303,
             "confidence": "low"
         },
         {
@@ -4513,6 +4912,13 @@
             "score": 67.47,
             "start": 1350.366653163,
             "end": 1356.33331977,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.47,
+            "start": 1468.99998531,
+            "end": 1487.883318454,
             "confidence": "low"
         },
         {
@@ -4712,6 +5118,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.26,
+            "start": 1999.566646671,
+            "end": 2008.016646586,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 67.24,
             "start": 1682.224983177,
@@ -4807,6 +5220,13 @@
             "score": 67.15,
             "start": 972.699990273,
             "end": 978.766656879,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 67.15,
+            "start": 1596.166650705,
+            "end": 1604.255539513,
             "confidence": "low"
         },
         {
@@ -5020,6 +5440,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.85,
+            "start": 1738.511093726,
+            "end": 1746.655538089,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 66.85,
             "start": 2031.199979688,
@@ -5125,6 +5552,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.72,
+            "start": 1506.799984932,
+            "end": 1525.373318078,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 66.72,
             "start": 3417.472188045,
@@ -5206,6 +5640,13 @@
             "score": 66.63,
             "start": 1434.066652326,
             "end": 1440.233318931,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.62,
+            "start": 141.399998586,
+            "end": 150.749998492,
             "confidence": "low"
         },
         {
@@ -5339,6 +5780,13 @@
             "score": 66.47,
             "start": 979.866656868,
             "end": 985.766656809,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.47,
+            "start": 1553.266651134,
+            "end": 1596.133317372,
             "confidence": "low"
         },
         {
@@ -5496,6 +5944,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.3,
+            "start": 92.942423313,
+            "end": 112.312120089,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 66.3,
             "start": 1225.566654411,
@@ -5549,6 +6004,27 @@
             "score": 66.21,
             "start": 512.66666154,
             "end": 527.66666139,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.21,
+            "start": 995.299990047,
+            "end": 1000.549989994,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.21,
+            "start": 2354.399976456,
+            "end": 2363.583309697,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.2,
+            "start": 310.227774675,
+            "end": 360.033329733,
             "confidence": "low"
         },
         {
@@ -5685,6 +6161,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.09,
+            "start": 1487.883318454,
+            "end": 1506.766651599,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 66.08,
             "start": 161.899998381,
@@ -5724,6 +6207,13 @@
             "score": 66.06,
             "start": 693.599993064,
             "end": 704.499992955,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.06,
+            "start": 2275.566643911,
+            "end": 2283.699977163,
             "confidence": "low"
         },
         {
@@ -5780,6 +6270,13 @@
             "score": 66.02,
             "start": 2831.799971682,
             "end": 2839.549971604,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 66.01,
+            "start": 23.499999765,
+            "end": 29.149999708,
             "confidence": "low"
         },
         {
@@ -5881,6 +6378,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.93,
+            "start": 589.488882992,
+            "end": 607.166660595,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 65.93,
             "start": 926.833324065,
@@ -5944,6 +6448,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.89,
+            "start": 1668.566649981,
+            "end": 1676.655538789,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 65.87,
             "start": 2063.966646027,
@@ -6000,6 +6511,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.82,
+            "start": 2639.633306937,
+            "end": 2644.966640217,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 65.81,
             "start": 858.599991414,
@@ -6025,6 +6543,13 @@
             "score": 65.79,
             "start": 328.766663379,
             "end": 343.344441011,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.79,
+            "start": 2454.924975449,
+            "end": 2471.983308613,
             "confidence": "low"
         },
         {
@@ -6091,10 +6616,24 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.72,
+            "start": 2326.799976732,
+            "end": 2345.177754326,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 65.72,
             "start": 3514.4444093,
             "end": 3523.155520324,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.71,
+            "start": 813.133325202,
+            "end": 822.962736868,
             "confidence": "low"
         },
         {
@@ -6112,10 +6651,31 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.69,
+            "start": 1461.866652048,
+            "end": 1468.966651977,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 65.69,
             "start": 2636.349973636,
             "end": 2643.433306899,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.68,
+            "start": 1329.116653375,
+            "end": 1345.64165321,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.67,
+            "start": 1013.833323195,
+            "end": 1020.577767572,
             "confidence": "low"
         },
         {
@@ -6525,6 +7085,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.2,
+            "start": 1525.373318078,
+            "end": 1534.659984651,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 65.2,
             "start": 2388.558309447,
@@ -6550,6 +7117,13 @@
             "score": 65.2,
             "start": 4384.866622818,
             "end": 4400.326622663,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.19,
+            "start": 205.599997944,
+            "end": 212.533331208,
             "confidence": "low"
         },
         {
@@ -6595,6 +7169,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.12,
+            "start": 674.383326589,
+            "end": 683.99999316,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 65.12,
             "start": 805.466658612,
@@ -6627,6 +7208,13 @@
             "score": 65.09,
             "start": 1642.066650246,
             "end": 1649.288872396,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.06,
+            "start": 1211.61665455,
+            "end": 1221.166654454,
             "confidence": "low"
         },
         {
@@ -6676,6 +7264,20 @@
             "score": 65.04,
             "start": 1311.99998688,
             "end": 1321.362949749,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.04,
+            "start": 1445.549985544,
+            "end": 1453.691652129,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 65.03,
+            "start": 428.088884608,
+            "end": 437.233328961,
             "confidence": "low"
         },
         {
@@ -6735,6 +7337,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.97,
+            "start": 44.518181373,
+            "end": 63.887878149,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc3027eec4fa50e7f7f",
             "score": 64.97,
             "start": 1522.519984774,
@@ -6746,6 +7355,13 @@
             "score": 64.97,
             "start": 4545.316621213,
             "end": 4550.533287828,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.96,
+            "start": 1921.266647454,
+            "end": 1927.899980721,
             "confidence": "low"
         },
         {
@@ -6805,6 +7421,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.88,
+            "start": 571.811105392,
+            "end": 589.488882992,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc3027eec4fa50e7f7f",
             "score": 64.88,
             "start": 2603.299973967,
@@ -6851,6 +7474,13 @@
             "score": 64.82,
             "start": 2731.955528236,
             "end": 2739.377750384,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.81,
+            "start": 160.133331732,
+            "end": 168.877776089,
             "confidence": "low"
         },
         {
@@ -6903,6 +7533,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.77,
+            "start": 220.466664462,
+            "end": 226.699997733,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cb9027eec4fa50e7f7e",
             "score": 64.77,
             "start": 3253.533300798,
@@ -6938,10 +7575,24 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.71,
+            "start": 1262.66665404,
+            "end": 1270.433320629,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834aa03d8c70ded5663f60",
             "score": 64.71,
             "start": 4140.566625261,
             "end": 4147.299958527,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.7,
+            "start": 980.266656864,
+            "end": 987.766656789,
             "confidence": "low"
         },
         {
@@ -6987,6 +7638,13 @@
             "confidence": "low"
         },
         {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.67,
+            "start": 2008.016646586,
+            "end": 2016.466646502,
+            "confidence": "low"
+        },
+        {
             "video_id": "67834cc03d8c70ded5663f67",
             "score": 64.67,
             "start": 2942.846637235,
@@ -6998,6 +7656,13 @@
             "score": 64.66,
             "start": 698.583326347,
             "end": 705.799992942,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.65,
+            "start": 2283.733310496,
+            "end": 2291.466643752,
             "confidence": "low"
         },
         {
@@ -7019,6 +7684,20 @@
             "score": 64.62,
             "start": 2259.266644074,
             "end": 2268.933310644,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.61,
+            "start": 607.199993928,
+            "end": 616.788882721,
+            "confidence": "low"
+        },
+        {
+            "video_id": "6783788a3d8c70ded5663f6f",
+            "score": 64.61,
+            "start": 1543.946651224,
+            "end": 1553.233317801,
             "confidence": "low"
         },
         {
