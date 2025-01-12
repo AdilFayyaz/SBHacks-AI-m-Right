@@ -63,11 +63,13 @@ def download_and_upload_video(youtube_url, api_key=os.getenv("TWELVE_LABS_KEY"),
         file=file_path
     )
 
-    print(f"Video uploaded successfully. Video ID: {task.video_id}")
+    video_id = task.video_id
+    print(f"Video uploaded successfully. Video ID: {video_id}")
 
-    # Delete the downloaded video file
-    os.remove(file_path)
-    print(f"Temporary video file {file_path} deleted.")
-
+    # Rename the downloaded video file with the video ID
+    new_file_name = f"{video_id}{os.path.splitext(downloaded_video_path)[-1]}"
+    new_file_path = os.path.join(path, new_file_name)
+    os.rename(file_path, new_file_path)
+    print(f"Temporary video file renamed to {new_file_name} and kept at {path}.")
 # Example usage
 # download_and_upload_video("https://youtu.be/Qf6OVR8MLnU?si=5fA3ojCw_zzo97FM")
