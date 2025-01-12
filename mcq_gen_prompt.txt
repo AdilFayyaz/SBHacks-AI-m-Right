@@ -11,7 +11,7 @@ You are a course producer of a course and you have to generate multiple choice q
 DO NOT add explanations or you own reasoning to the output other than in the JSON.
 
 ##Passage:
-In Angular, the component lifecycle is a sequence of events that occur from the moment a component is instantiated until it is destroyed. A critical part of this lifecycle is the ngOnInit lifecycle hook. It is invoked once the component’s inputs have been initialized, ensuring that all data-bound properties are set before the component's business logic is executed. This hook is typically used for tasks such as initializing component state, making API calls, or setting up subscriptions that are needed throughout the lifecycle of the component. Understanding the correct use of lifecycle hooks, including ngOnInit, is fundamental for managing component behavior in a maintainable and efficient way. The ngOnInit method is called only once during the component's lifecycle, unlike hooks such as ngOnChanges or ngDoCheck, which are invoked more frequently during the component's existence.
+In Angular, the component lifecycle is a sequence of events that occur from the moment a component is instantiated until it is destroyed. A critical part of this lifecycle is the ngOnInit lifecycle hook.
 
 {
     "question": "Which of the following is the primary purpose of Angular's ngOnInit lifecycle hook?",

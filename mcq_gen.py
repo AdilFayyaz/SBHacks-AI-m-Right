@@ -82,7 +82,7 @@ def generate_mcq(context,nos):
     
     # Construct the prompt
     prompt = create_prompt(context, template,nos)
-    
+    # import pdb; pdb.set_trace()
     retries = 5
     while retries > 0:
         retries -= 1
@@ -94,10 +94,11 @@ def generate_mcq(context,nos):
                 {"role": "user", "content": prompt}
             ]
         )
-        # import pdb; pdb.set_trace()
+        
         # Extract and parse the response
 
         extracted_details = extract_response_details_mcq(response.content[0].text)
+        import pdb; pdb.set_trace()
         if extracted_details is not None:  # If valid JSON was extracted, return it
             return extracted_details
         

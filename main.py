@@ -163,6 +163,7 @@ if st.session_state.quiz_state == "landing":
 elif st.session_state.quiz_state == "quiz":
     questions = st.session_state.questions.json()
     current_index = st.session_state.current_question
+    print(questions)
     tot_ques = len(questions)
     if current_index < tot_ques:
         question = questions[current_index]
