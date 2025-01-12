@@ -3,7 +3,7 @@ from twelvelabs import TwelveLabs
 import json
 import requests
 import os
-
+from moviepy import *
 from dotenv import load_dotenv
 
 
