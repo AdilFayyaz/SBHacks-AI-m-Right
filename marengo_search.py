@@ -116,7 +116,7 @@ class TwelveLabsSearch:
         video_info = TwelveLabsSearch.get_video_info(video_id=results[0][0]['video_id'])
         video_url = video_info['hls']['video_url']
         # import pdb; pdb.set_trace()  
-        searcher.download_and_crop_video(video_url,'extracted_clip.mp4')#, results[0][0]['start'], results[0][0]['end'])
+        download_and_crop_video(video_url,'extracted_clip.mp4')#, results[0][0]['start'], results[0][0]['end'])
         return ('extracted_clip.mp4', results[0][0]['start'])
 
 
