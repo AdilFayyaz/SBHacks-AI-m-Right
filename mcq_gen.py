@@ -98,7 +98,6 @@ def generate_mcq(context,nos):
         # Extract and parse the response
 
         extracted_details = extract_response_details_mcq(response.content[0].text)
-        import pdb; pdb.set_trace()
         if extracted_details is not None:  # If valid JSON was extracted, return it
             return extracted_details
         

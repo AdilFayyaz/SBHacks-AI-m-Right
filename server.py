@@ -131,10 +131,9 @@ def verify():
         llm_answer = data['llm_answer']
         user_answer = data['answer']
 
-        import pdb; pdb.set_trace()
         # Verify the answer using verifier.py
         result = verify_short_answer(question, user_answer, llm_answer)
-        print("here here her ehr eh")
+
         if not result:
             return jsonify({"error": "Verification failed."}), 500
 
@@ -148,7 +147,9 @@ def verify():
 def generate_handout_endpoint():
     try:
         # Call the generate_handout function
-        handout_paragraph = generate_handout()
+        data = request.get_json()
+        ctx = data['context']
+        handout_paragraph = generate_handout(ctx)
 
         # Return the generated handout paragraph
         return jsonify({"handout": handout_paragraph}), 200
