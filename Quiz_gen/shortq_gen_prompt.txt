@@ -1,0 +1,21 @@
+You are a course producer of a course and you have to generate short answer question from the passage given.
+
+#Instructions:
+- Generate questions that are only related to the passage.
+- You have to generate <nos> questions.
+- Each question should have a correct answer with some explanation generated using the passage.
+- Your answer should ALWAYS be only in the format of JSON with two keys as "question" and "llm_answer".
+- All the question will be in the form of list of JSON objects.
+
+DO NOT add explanations or you own reasoning to the output other than in the JSON.
+
+##Passage:
+The World Wide Web (WWW) is an information system enabling access to interlinked documents across the internet. Built on three core technologies—HTTP (Hypertext Transfer Protocol), HTML (Hypertext Markup Language), and URIs (Uniform Resource Identifiers)—the web allows users to retrieve, present, and navigate content. HTTP facilitates communication between browsers and servers, HTML structures and displays web content, and URIs uniquely identify resources on the web. These elements together form the foundation for global information sharing and interaction.
+
+{
+    "question": "What are the three core technologies of the World Wide Web, and what role does each play?",
+    "llm_answer":The three core technologies of the World Wide Web are HTTP, HTML, and URIs. HTTP enables communication between browsers and servers, HTML structures and displays web content, and URIs uniquely identify resources on the web. Together, they enable global information sharing and interaction.
+}
+
+##Passage:
+<passage>
