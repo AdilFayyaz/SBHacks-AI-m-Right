@@ -9,7 +9,7 @@ def pinecone_retrieval(user_input, ctx, embedder):
     # Generate the query vector
     query_vector = embedder.encode(query_text)
     query_params = {
-        "top_k": 15,
+        "top_k": 5,
         "include_values": True,
         "include_metadata": True,
         "vector": query_vector
@@ -22,4 +22,5 @@ def pinecone_retrieval(user_input, ctx, embedder):
         query=query_params,
     ).take_all()
 
-    return "".join([doc["text_representation"] for doc in query_docs])
+    # return "".join([doc["text_representation"] for doc in query_docs])
+    return query_docs[0]["properties"]["entity"]["keyConcepts"] + "".join([doc["text_representation"] for doc in query_docs])

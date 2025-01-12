@@ -3,6 +3,7 @@ import pyarrow.fs
 import sycamore
 import json
 import os
+import shutil
 from pinecone import Pinecone
 from sycamore.functions.tokenizer import HuggingFaceTokenizer
 from sycamore.llms import OpenAIModels, OpenAI
@@ -24,6 +25,12 @@ from sentence_transformers import SentenceTransformer
 from handout_gen import generate_handout
 from upload import download_and_upload_video
 from marengo_search import *
+from sycamore.transforms.regex_replace import COALESCE_WHITESPACE
+from sycamore.transforms.extract_schema import OpenAIPropertyExtractor
+from sycamore.llms import OpenAI, OpenAIModels
+from transformers import AutoTokenizer
+from sycamore.transforms.merge_elements import MarkedMerger
+import pinecone
 
 # Load environment variables
 load_dotenv()
@@ -31,6 +38,7 @@ ARYN_API_KEY = os.getenv("ARYN_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 
 app = Flask(__name__)
+hf_tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 
 @app.route('/upload-embedding', methods=['POST'])
 def upload_embedding():
@@ -55,6 +63,85 @@ def upload_embedding():
         # Initialize the Sycamore context
         ctx = sycamore.init(ExecMode.LOCAL)
         print("Print 1")
+        initial_docset = ctx.read.binary(paths = file_path, binary_format = "pdf")
+        
+        # shutil.rmtree("./pc-tutorial/partitioned", ignore_errors=True)
+        
+        # Set your Aryn API key. See https://sycamore.readthedocs.io/en/stable/aryn_cloud/accessing_the_partitioning_service.html#using-sycamore-s-partition-transform
+
+        partitioned_docset = (
+                initial_docset.partition(partitioner=ArynPartitioner(extract_images=False,  extract_table_structure=True, use_ocr=True))
+                .materialize(path="./pc-tutorial/partitioned", source_mode=sycamore.materialize_config.MaterializeSourceMode.IF_PRESENT)
+        )
+        partitioned_docset.execute()
+        
+        regex_docset = partitioned_docset.regex_replace(COALESCE_WHITESPACE)
+        
+        llm = OpenAI(OpenAIModels.GPT_4O.value, api_key=os.environ["OPENAI_API_KEY"])
+
+        enriched_docset = (regex_docset
+            .with_property('_schema_class', lambda d: 'LectureSlides')
+            .with_property('_schema', lambda d: {
+                    'type': 'object',
+            'properties': {
+                'topicName': {'type': 'string'},
+                'keyConcepts': {'type': 'string'}
+            },
+            'required': ['keyConcepts']}
+                        )
+            .extract_properties(property_extractor=OpenAIPropertyExtractor(llm=llm, num_of_elements=35))
+        )
+        
+
+        # Step 2: Define a custom tokenizer class
+        class CustomTokenizer:
+            def __init__(self, tokenizer, max_tokens):
+                self.tokenizer = tokenizer
+                self.max_tokens = max_tokens
+
+            def tokenize(self, text):
+                # Tokenize the input text using Hugging Face tokenizer
+                tokens = self.tokenizer.tokenize(text)
+                return tokens
+
+            def token_count(self, text):
+                # Count tokens for the given text
+                return len(self.tokenize(text))
+
+            def truncate(self, text):
+                # Truncate the text to fit within max tokens
+                tokens = self.tokenize(text)
+                if len(tokens) > self.max_tokens:
+                    tokens = tokens[:self.max_tokens]
+                return self.tokenizer.convert_tokens_to_string(tokens)
+
+        # Step 3: Initialize the custom tokenizer
+        max_tokens = 8192
+        tokenizer = CustomTokenizer(tokenizer=hf_tokenizer, max_tokens=max_tokens)
+
+        chunked_docset = (enriched_docset
+            .mark_bbox_preset(tokenizer=tokenizer, token_limit=max_tokens)
+            .merge(merger=MarkedMerger())
+            .split_elements(tokenizer=tokenizer, max_tokens=max_tokens)
+        )
+        exploded_docset = chunked_docset.spread_properties(["path", "entity"]).explode()
+        model_name = "sentence-transformers/all-MiniLM-L6-v2"
+
+        embedded_ds = (
+            exploded_docset
+            # Embed each Document. You can change the embedding model. Make your target vector index matches this number of dimensions.
+            .embed(embedder=SentenceTransformerEmbedder(model_name=model_name))
+        )
+        
+        embedding_dim = 384
+
+        embedded_ds.write.pinecone(
+            index_name="sbhacks",
+            index_spec=pinecone.ServerlessSpec(cloud="aws", region="us-east-1"),
+            dimensions=embedding_dim,
+            distance_metric="cosine",
+        )
+
         # Set the embedding model and its parameters
         # model_name = "sentence-transformers/all-MiniLM-L6-v2"
         # max_tokens = 512
@@ -113,7 +200,7 @@ def upload_embedding():
         #     questions = generate_mcq(user_prompt_text, number_of_questions)
         # elif type_of_question=="short":
         #     questions = generate_shortq(user_prompt_text, number_of_questions)
-        print("Reached here")
+        
         return questions
 
     except Exception as e:
