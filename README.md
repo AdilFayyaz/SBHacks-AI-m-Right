@@ -1,6 +1,6 @@
 # AI’m Right
 
-AI’m Right simplifies the study process by providing tools for quiz generation, lecture handouts, and video content search using cutting-edge AI technologies.
+AI’m Right simplifies the study process by providing tools for quiz generation, lecture handouts, and video content search using cutting-edge AI technologies. This project was submitted during SBHacksIX.
 
 ![gallery](https://github.com/user-attachments/assets/a41738de-c75b-4023-8936-2aa32254d79f)
 
