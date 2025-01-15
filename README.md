@@ -1,51 +1,88 @@
-# AI’m Right  
+# AI’m Right
 
-## Inspiration  
-Exam season can feel like an uphill battle—juggling lecture videos, endless notes, and the challenge of synthesizing everything into a cohesive study guide. This chaos inspired us to create *AI’m Right*: a solution that doesn’t just help you ace your quizzes but also revolutionizes how you process and engage with complex academic content.  
+AI’m Right simplifies the study process by providing tools for quiz generation, lecture handouts, and video content search using cutting-edge AI technologies.
 
-## What It Does  
-AI’m Right is a powerful *Retrieval-Augmented Generation (RAG)* pipeline combined with a *Multimodal Indexing Engine*. Its key features include:  
-- *Smart Quiz Generation*: Effortlessly create customized quizzes based on your lecture materials.  
-- *Handout Creation*: Transform hours of lecture content into concise, easy-to-digest handouts.  
-- *Lecture Video Search*: Navigate large video archives to pinpoint specific topics or concepts in seconds.  
+![gallery](https://github.com/user-attachments/assets/a41738de-c75b-4023-8936-2aa32254d79f)
 
-With AI’m Right, your study time becomes more focused, efficient, and impactful.  
 
-## How We Built It  
-Our tech stack includes:  
-- *Streamlit-powered Python frontend* for an intuitive user experience.  
-- *Flask backend* for robust performance and scalability.  
-- Integration with leading *Large Language Models (LLMs)* such as Claude, OpenAI, and all-MiniLM-L6-v2.  
-- Advanced *Multimodal APIs* like Marengo to process and analyze diverse data types.  
-- *Pinecone Vector Database* for efficient and scalable storage and retrieval of vectorized data.  
-- An *ETL (Extract, Transform, Load) pipeline* leveraging Aryn and Sycamore to preprocess, index, and manage multimodal data seamlessly.  
-- Collaborative version control through a *shared GitHub repository*, ensuring smooth team workflows and proper code versioning.  
+---
 
-Every feature was thoughtfully designed to create a seamless user experience.  
+## Features
+- **Smart Quiz Generation**: Generate customized quizzes based on your lecture content.
+- **Handout Creation**: Summarize lecture materials into concise and easy-to-digest handouts.
+- **Lecture Video Search**: Quickly locate specific topics or concepts in large video archives.
 
-## Challenges We Faced  
-Building AI’m Right wasn’t without its hurdles:  
-- Integrating Aryn with LangChain required extensive troubleshooting.  
-- Handling cross-platform compatibility issues between Windows and Mac systems.  
-- Debugging connectivity issues between APIs and ensuring a stable pipeline.  
+---
 
-Despite these challenges, our team’s resilience and collaboration brought this project to life.  
+## Tech Stack
+- **Frontend**: [Streamlit](https://streamlit.io/) for a user-friendly interface.
+- **Backend**: [Flask](https://flask.palletsprojects.com/) for robust server-side operations.
+- **APIs**: Claude, Pinecone, Aryn, Twelve Labs for advanced processing and data management.
+- **Database**: Pinecone Vector Database for scalable data retrieval.
 
-## Accomplishments We’re Proud Of  
-- Completing a fully functional end-to-end pipeline for AI’m Right within a tight timeline.  
-- Successfully integrating multiple technologies to create a cohesive learning platform.  
-- Building a supportive and collaborative team culture that fostered innovation and productivity.  
+![pipeline](https://github.com/user-attachments/assets/1e61aa32-e393-4788-8982-a035f551e0be)
 
-## What We Learned  
-This journey taught us invaluable lessons:  
-- Mastery of new tools and frameworks like Aryn, Sycamore, and Pinecone.  
-- The importance of time management and respecting team members’ schedules.  
-- The value of mutual support and collaboration in overcoming complex challenges.  
+---
 
-## What’s Next for AI’m Right?  
-We’re just getting started! Here’s what’s on the horizon:  
-- *Scalability*: Expanding the platform for use by thousands of concurrent users.  
-- *Enhanced Querying*: Developing more sophisticated indexing systems for even larger document and video datasets.  
-- *Seamless User Experience*: Refining the interface to ensure accessibility and ease of use for diverse learners.  
+## Installation
 
-With AI’m Right, we envision a future where no learner feels left behind. Stay tuned as we continue to innovate and transform education!
+### Prerequisites
+- Python 3.8 or higher.
+- Install dependencies with pip:
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+### Setting up Environment Variables
+1. Create a `.env` file in the root directory of the project.
+2. Add the following API keys:
+   ```env
+   CLAUDE_API="<your-claude-api-key>"
+   ARYN_API_KEY="<your-aryn-api-key>"
+   PINECONE_API_KEY="<your-pinecone-api-key>"
+   TWELVE_LABS_KEY="<your-twelve-labs-key>"
+   INDEX_ID="<your-index-id>"
+   ```
+
+---
+
+## Running the Application
+
+### Backend
+Start the Flask server:
+   ```bash
+   python server.py
+   ```
+
+### Frontend
+Start the Streamlit app:
+   ```bash
+   streamlit run main.py
+   ```
+
+---
+
+## Usage
+1. Open your browser and navigate to `http://localhost:8501` (Streamlit default port).
+2. Use the following features:
+   - **Quiz Generation**: Upload lecture materials or paste content to generate quizzes.
+   - **Handout Creation**: Provide lecture notes to generate summarized handouts.
+   - **Video Search**: Upload video files to search for specific topics or concepts.
+
+---
+
+## Contributing
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature-name`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-name`).
+5. Open a pull request.
+
+---
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
