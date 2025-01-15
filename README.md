@@ -4,6 +4,9 @@ AI’m Right simplifies the study process by providing tools for quiz generation
 
 ![gallery](https://github.com/user-attachments/assets/a41738de-c75b-4023-8936-2aa32254d79f)
 
+- [Youtube Demo](https://www.youtube.com/watch?v=MnOdexX39SU)
+- [DevPost Link](https://devpost.com/software/ai-m-right)
+
 
 ---
 
